@@ -163,6 +163,8 @@ html[lang="zh-TW"] .field label{font-family:var(--sans);font-size:13px;letter-sp
 .field input:focus{outline:none;border-bottom-color:var(--caramel)}
 .field.bad input{border-bottom-color:var(--caramel)}
 .form-foot{display:flex;justify-content:flex-end;padding-top:6px}
+.form-err{margin:0;font-size:13px;color:var(--caramel)}
+form{position:relative}
 .done{align-content:start}
 .done .mark{font-size:20px}
 .done p{margin:0;font-size:12.5px;color:var(--muted)}
@@ -368,11 +370,13 @@ footer{padding-block:96px 44px;border-top:1px solid var(--line)}
           <label for="f-contact"><span class="en">Direct Contact</span><span class="zh">企業對公聯絡信箱及溝通帳號</span></label>
           <input id="f-contact" name="contact" autocomplete="email" data-ph-en="Corporate Email and WhatsApp or WeChat ID">
         </div>
+        <input type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <p class="form-err" id="form-err" role="alert" hidden><span class="en">Submission failed. Please try again later.</span><span class="zh">提交未成功，請稍後再試。</span></p>
         <div class="form-foot"><button class="btn solid" type="submit"><span class="en">Submit Application</span><span class="zh">提交申請</span></button></div>
       </form>
       <div class="done" id="done" hidden>
         <div class="mark">REALUXIA<span class="dot"></span></div>
-        <p><span class="en">Preview build: this form is not yet connected; nothing was sent.</span><span class="zh">預覽版本：表單尚未接入，資訊未傳送。</span></p>
+        <p><span class="en">Thank you. Your application has been received.</span><span class="zh">感謝您的申請，我們已收到。</span></p>
       </div>
     </div>
   </div>
@@ -424,7 +428,15 @@ footer{padding-block:96px 44px;border-top:1px solid var(--line)}
     e.preventDefault();var first=null;
     form.querySelectorAll('.field').forEach(function(f){var i=f.querySelector('input'),bad=!i.value.trim();f.classList.toggle('bad',bad);if(bad&&!first)first=i});
     if(first){first.focus();return}
-    form.hidden=true;done.hidden=false;
+    var btn=form.querySelector('button[type=submit]'),err=document.getElementById('form-err');
+    err.hidden=true;btn.disabled=true;btn.style.opacity=.6;
+    var body={lang:root.lang,website:form.website.value};
+    ['name','market','volume','contact'].forEach(function(k){body[k]=form[k].value.trim()});
+    fetch('/api/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||!j.ok)throw 0})})
+      .then(function(){form.hidden=true;done.hidden=false})
+      .catch(function(){err.hidden=false})
+      .then(function(){btn.disabled=false;btn.style.opacity=''});
   });
 
   var h=(location.hash||'').slice(1),saved='en';
