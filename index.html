@@ -430,8 +430,8 @@ footer{padding-block:96px 44px;border-top:1px solid var(--line)}
     if(first){first.focus();return}
     var btn=form.querySelector('button[type=submit]'),err=document.getElementById('form-err');
     err.hidden=true;btn.disabled=true;btn.style.opacity=.6;
-    var body={lang:root.lang,website:form.website.value};
-    ['name','market','volume','contact'].forEach(function(k){body[k]=form[k].value.trim()});
+    var body={lang:root.lang,website:document.getElementById('f-website').value};
+    ['name','market','volume','contact'].forEach(function(k){body[k]=document.getElementById('f-'+k).value.trim()});
     fetch('/api/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
       .then(function(r){return r.json().then(function(j){if(!r.ok||!j.ok)throw 0})})
       .then(function(){form.hidden=true;done.hidden=false})
