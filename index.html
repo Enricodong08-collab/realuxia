@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -36,8 +36,8 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.8;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
-html[lang="zh-TW"] body{letter-spacing:.06em}
-html[lang="en"] .zh, html[lang="zh-TW"] .en{display:none !important}
+html[data-lang="tw"] body{letter-spacing:.06em}
+html[data-lang="en"] .zh, html[data-lang="tw"] .en{display:none !important}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--caramel-soft)}
 :focus-visible{outline:1px solid var(--caramel);outline-offset:5px}
@@ -48,7 +48,7 @@ a{color:inherit;text-decoration:none}
 .mark img{display:block;height:100%;width:auto}
 
 .label{font-family:var(--latin);font-weight:400;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
-html[lang="zh-TW"] .label{font-family:var(--sans);font-size:12px;letter-spacing:.36em}
+html[data-lang="tw"] .label{font-family:var(--sans);font-size:12px;letter-spacing:.36em}
 
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(23,24,26,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .5s}
@@ -56,7 +56,7 @@ html[lang="zh-TW"] .label{font-family:var(--sans);font-size:12px;letter-spacing:
 .top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px;gap:24px}
 .nav{display:flex;gap:34px}
 .nav a,.top-right a{font-family:var(--latin);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-2);position:relative;padding-block:6px}
-html[lang="zh-TW"] .nav a,html[lang="zh-TW"] .top-right a{font-family:var(--sans);font-size:12px;letter-spacing:.3em}
+html[data-lang="tw"] .nav a,html[data-lang="tw"] .top-right a{font-family:var(--sans);font-size:12px;letter-spacing:.3em}
 .nav a::after,.top-right a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--caramel);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
 .nav a:hover,.top-right a:hover{color:var(--ink)}
 .nav a:hover::after,.top-right a:hover::after{transform:scaleX(1)}
@@ -85,7 +85,7 @@ section{padding-block:120px}
 @media (max-width:700px){section{padding-block:88px}}
 .head{display:grid;gap:22px;margin-bottom:64px}
 h2{font-family:var(--sans);font-weight:300;font-size:clamp(26px,2.8vw,38px);line-height:1.35;letter-spacing:.01em;margin:0;text-wrap:balance}
-html[lang="zh-TW"] h2{font-weight:200;letter-spacing:.12em;line-height:1.55}
+html[data-lang="tw"] h2{font-weight:200;letter-spacing:.12em;line-height:1.55}
 
 /* genesis: 1200px, three equal text columns */
 .roots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(32px,5vw,72px);max-width:1200px}
@@ -108,7 +108,7 @@ html[lang="zh-TW"] h2{font-weight:200;letter-spacing:.12em;line-height:1.55}
 .anchors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(32px,5vw,72px)}
 .anchor{border-top:1px solid var(--line);padding-top:32px}
 .anchor h3{font-family:var(--latin);font-weight:400;font-size:16px;letter-spacing:.26em;text-transform:uppercase;margin:0}
-html[lang="zh-TW"] .anchor h3{font-family:var(--sans);letter-spacing:.3em}
+html[data-lang="tw"] .anchor h3{font-family:var(--sans);letter-spacing:.3em}
 .anchor .sub{margin:14px 0 0;font-size:14px;letter-spacing:.06em;color:var(--caramel)}
 .anchor p{margin:18px 0 0;font-size:14px;line-height:1.8;color:var(--ink-2)}
 @media (max-width:860px){.anchors{grid-template-columns:1fr}}
@@ -127,7 +127,7 @@ html[lang="zh-TW"] .anchor h3{font-family:var(--sans);letter-spacing:.3em}
 .flow{border:1px solid var(--line);padding:clamp(28px,3vw,44px);display:grid;align-content:start;gap:16px;transition:border-color .6s,box-shadow .6s}
 .flow:hover{border-color:var(--caramel);box-shadow:0 30px 70px -48px var(--caramel-glow)}
 .flow h3{font-family:var(--latin);font-weight:400;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--caramel);margin:0}
-html[lang="zh-TW"] .flow h3{font-family:var(--sans);font-size:15px;letter-spacing:.3em}
+html[data-lang="tw"] .flow h3{font-family:var(--sans);font-size:15px;letter-spacing:.3em}
 .flow .lead{margin:6px 0 0;font-size:16px;font-weight:400;line-height:1.6;color:var(--ink)}
 .flow p{margin:0;font-size:14px;line-height:1.8;color:var(--ink-2)}
 .hub{margin-top:10px;padding-top:20px;border-top:1px solid var(--line);display:grid;gap:8px}
@@ -142,7 +142,7 @@ html[lang="zh-TW"] .flow h3{font-family:var(--sans);font-size:15px;letter-spacin
 .frame:hover .shot::after{opacity:1}
 .cap{text-align:center;display:grid;gap:4px;padding-top:22px}
 .cap .b{font-family:var(--latin);font-weight:500;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-html[lang="zh-TW"] .cap .b{font-family:var(--sans)}
+html[data-lang="tw"] .cap .b{font-family:var(--sans)}
 .cap .c,.cap .m{font-size:13px;color:var(--muted)}
 .gallery .cta{margin-top:72px;display:flex;justify-content:center}
 @media (max-width:900px){.frames{grid-template-columns:repeat(2,minmax(0,1fr))}.frames .frame:nth-child(3){display:none}}
@@ -150,7 +150,7 @@ html[lang="zh-TW"] .cap .b{font-family:var(--sans)}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--latin);font-weight:400;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:17px 32px;border:1px solid var(--caramel);color:var(--caramel);background:transparent;cursor:pointer;transition:background .5s,box-shadow .5s,color .5s}
-html[lang="zh-TW"] .btn{font-family:var(--sans);font-size:13px;letter-spacing:.3em}
+html[data-lang="tw"] .btn{font-family:var(--sans);font-size:13px;letter-spacing:.3em}
 .btn:hover{background:var(--caramel-soft);box-shadow:0 14px 44px -18px var(--caramel-glow)}
 .btn.solid{background:var(--caramel);color:#FFFFFF}
 .btn.solid:hover{background:var(--caramel-deep);color:#FFFFFF}
@@ -161,7 +161,7 @@ html[lang="zh-TW"] .btn{font-family:var(--sans);font-size:13px;letter-spacing:.3
 form,.done{background:var(--white);padding:clamp(28px,4.4vw,60px);display:grid;gap:34px}
 .field{display:grid;gap:10px}
 .field label{font-family:var(--latin);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
-html[lang="zh-TW"] .field label{font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:none}
+html[data-lang="tw"] .field label{font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:none}
 .field input{font:inherit;font-weight:300;font-size:15px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 0 12px;border-radius:0;transition:border-color .5s}
 .field input::placeholder{color:#6B6D72}
 .field input:focus{outline:none;border-bottom-color:var(--caramel)}
@@ -414,6 +414,7 @@ footer{padding-block:96px 44px;border-top:1px solid var(--line)}
   function setLang(l){
     if(l!=='tw')l='en';
     root.lang=l==='tw'?'zh-TW':'en';
+    root.setAttribute('data-lang',l); /* visibility keys off data-lang: browser translation rewrites lang */
     document.querySelectorAll('.lang').forEach(function(b){var on=b.dataset.l===l;b.classList.toggle('cur',on);b.setAttribute('aria-pressed',on)});
     document.querySelectorAll('[data-ph-en]').forEach(function(el){el.placeholder=l==='en'?el.getAttribute('data-ph-en'):''});
     try{localStorage.setItem('rlx-lang',l)}catch(e){}
